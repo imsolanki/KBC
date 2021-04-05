@@ -8,26 +8,32 @@ body {
        width: 300px;
        margin: left;
        border: 3px solid #0e57f7;
+       display:inline-block;
+       padding-inline-start: 25px;
 }
 .column{
        background-color:#9795ff;
+       opacity: 90%;
        width: 900px;
        margin: left;
        border: 3px solid #01143b;
 }
-.columnScore{
+
+.columnV{
        background-color: #9795ff;
        margin: auto;
        position: absolute;
-       top: 0;
-       left: 1007px;
-       width: 250px;
+       top: 0.3px;
+       left: 1019px;
+       width: 254.3px;
        border: 3px solid #73AD21;
-}
-.columnV{
-      background-color:hsl(241, 85%, 68%);
-      
+       background-color:hsl(241, 85%, 68%);
+       font-size: 14.45px;
+       height:571px;
 }
 #orangeh2{
        background-color:orange;
+       border: 3px solid #4436c9;
+       text-align: center;
+       
 }
