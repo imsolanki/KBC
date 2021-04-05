@@ -1,0 +1,33 @@
+body {
+       background-image: url("https://media1.santabanta.com/full1/Indian%20TV%20Serials/Kaun%20Banega%20Crorepati/kaun-banega-crorepati-0a.jpg");
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+}
+.columnO{
+       background-color:#afb4df;
+       width: 300px;
+       margin: left;
+       border: 3px solid #0e57f7;
+}
+.column{
+       background-color:#9795ff;
+       width: 900px;
+       margin: left;
+       border: 3px solid #01143b;
+}
+.columnScore{
+       background-color: #9795ff;
+       margin: auto;
+       position: absolute;
+       top: 0;
+       left: 1007px;
+       width: 250px;
+       border: 3px solid #73AD21;
+}
+.columnV{
+      background-color:hsl(241, 85%, 68%);
+      
+}
+#orangeh2{
+       background-color:orange;
+}
