@@ -1,4 +1,5 @@
-
+var q_id =0;
+var clickAllowed =true;
        //3
 /*
  this function get called from onPageLoad function, and after passing all the parameters.
@@ -7,11 +8,19 @@ them as html output on that particular place and make all relative parameters eq
 2. all parameter take their places and showed on their respective id's places.
 */
   		  function updateQus(qus,opt1,opt2,opt3,opt4){
+			clickAllowed =true;
             document.getElementById("qus").innerHTML= qus;
+			
             document.getElementById("ans1").innerHTML= opt1;
+			document.getElementById("ans1").style.backgroundColor = "";
             document.getElementById("ans2").innerHTML= opt2;
+			document.getElementById("ans2").style.backgroundColor = "";
             document.getElementById("ans3").innerHTML= opt3;
+			document.getElementById("ans3").style.backgroundColor = "";
             document.getElementById("ans4").innerHTML= opt4;
+			document.getElementById("ans4").style.backgroundColor = "";
+			
+			
         }
 /*
 
@@ -28,17 +37,39 @@ answer which is correct matches to the backend, options turns green else red.
         
         //3
         function findingAns(clickedOption){
-	
+			
+			if(clickAllowed==false){
+				alert("Selecting Double options is not allowed!")
+				return;
+			}
+			clickAllowed=false;
 			console.log(clickedOption);
-			fetch('checkAnswers.jsp?question_id=1234&option='+clickedOption)
-  			.then(response => response.json())
+			fetch('checkAnswers.jsp?question_id='+q_id+'&option='+clickedOption)
+  			.then(response => {
+				console.log(response);
+				return response.json();
+			})
   			.then(data => {
 				console.log(data)
 				if(data.status=="correct"){
-                document.getElementById("ans"+clickedOption).style.backgroundColor = "green";
+                document.getElementById("ans"+clickedOption).style.backgroundColor = "yellow";
+				setTimeout(function(){
+					document.getElementById("ans"+clickedOption).style.backgroundColor = "green";
+					setTimeout(function(){correctAnswer(); }, 2000);
+					 
+				 }, 3000);
+				
+				
             }
             else{
-                document.getElementById("ans"+clickedOption).style.backgroundColor = "red";
+                 document.getElementById("ans"+clickedOption).style.backgroundColor = "yellow";
+				setTimeout(function(){
+					document.getElementById("ans"+clickedOption).style.backgroundColor = "red";
+					setTimeout(function(){wrongAnswer(); }, 2000);
+					 
+				 }, 3000);
+				
+				
             }
 				});
 			 }
@@ -56,8 +87,9 @@ answer which is correct matches to the backend, options turns green else red.
 		5 similarly we fetch all the outputs one by one.
 		6. and call update ques method in the end and pass all the parameters which have all the info of the backend.
 */
-        function onPageLoad(){
-			fetch('getQuestions.jsp')
+        function onPageLoad(question_id){
+		 	
+			fetch('getQuestions.jsp?question_id='+question_id)
  		 	.then(response => {
 				console.log(response);
 				return response.json();
@@ -69,6 +101,7 @@ answer which is correct matches to the backend, options turns green else red.
 			
 			
 			var opt1= data.options[0];
+			
             console.log(data.options[0]);
             var opt2 =data.options[1];
 			
@@ -79,7 +112,7 @@ answer which is correct matches to the backend, options turns green else red.
             updateQus(qus,opt1,opt2,opt3,opt4);
 				});
 	
-           
+           document.getElementById("level"+(q_id)).style.backgroundColor = "Chartreuse";
         }
 
         //1  
@@ -88,9 +121,22 @@ answer which is correct matches to the backend, options turns green else red.
 		*/
         document.addEventListener('DOMContentLoaded', function() {
             // your code here
-            onPageLoad();
+
+            onPageLoad(q_id);
          }, false);
         
-    
+   
+
+ function correctAnswer(){
+	q_id=q_id+1;
+	onPageLoad(q_id);
+	document.getElementById("level"+(q_id-1)).style.backgroundColor = "white";
+}
+
+ function wrongAnswer(){
+	
+	document.getElementById("level"+(q_id)).style.backgroundColor = "red";
+	alert("You Lost at this level!");
+}
         
     

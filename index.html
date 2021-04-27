@@ -3,10 +3,46 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The KBC</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+        .btn {
+ 		 position: absolute;
+		  top: 50%;
+ 		 left: 50%;
+ 		 transform: translate(-50%, -50%);
+ 		 -ms-transform: translate(-50%, -50%);
+ 		 background-color: #555;
+ 		 color: white;
+ 		 font-size: 50px;
+ 		 padding: 12px 24px;
+ 		 border: none;
+  		 cursor: pointer;
+  		 border-radius: 5px;
+ 		 text-align: center;
+}
+        
+    </style>
+    
+     </head>
+     
     <body>
-        <img src ="https://static.langimg.com/thumb/msid-69355236,imgsize-428966,width-540,height-405,resizemode-75/navbharat-times.jpg">   
+    <div class="imgbox">
+    <img class="center-fit" src="https://origin-staticv2.sonyliv.com/landscape_thumb/KBC2020Generic_Landscape_Thumb-8.jpg">
+    
+    <button onclick="location.href = 'quiz.html'" class="btn" >Let's Play!</button>
+</div>
     
     </body>
 </html>
