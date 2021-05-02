@@ -9,4 +9,4 @@
 ![alt index](screenshot/index.png)
 ![alt lost](screenshot/lost.png)
 ![alt win](screenshot/win.png)
-![alt Game Starting](screenshot/firstPage.png)
+
